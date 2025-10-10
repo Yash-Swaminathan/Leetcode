@@ -80,7 +80,7 @@ class Solution(object):
                     left = mid + 1
             else:
                 if nums[mid] <= target <= nums[right]:
-                    low = mid + 1
+                    left= mid + 1
                 else:
                     right = mid -1
         return -1
