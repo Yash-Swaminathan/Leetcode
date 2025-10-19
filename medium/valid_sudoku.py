@@ -44,3 +44,33 @@
 # board.length == 9
 # board[i].length == 9
 # board[i][j] is a digit 1-9 or '.'.
+
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        rows = [set() for _ in range(9)]
+        col = [set() for _ in range(9)]
+        box = [set() for _ in range(9)]
+
+        for i in range(9):
+            for j in range(9):
+                char = board[i][j]
+                if char == ".":
+                    continue
+
+                box_index = (i // 3) * 3 + (j // 3)
+
+                if char in rows[i] or char in col[j] or char in box[box_index]:
+                    return False
+            
+                rows[i].add(char)
+                col[j].add(char)
+                box[box_index].add(char)
+        return True
+        
+
+
+        
