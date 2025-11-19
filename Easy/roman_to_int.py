@@ -59,7 +59,7 @@ class Solution(object):
         }
 
         res = 0
-        for i in range(len(s) - 1):
+        for i in range(len(s) - 1): 
             if roman_to_int[s[i]] < roman_to_int[s[i+1]]:
                 res -= roman_to_int[s[i]]
             else:
