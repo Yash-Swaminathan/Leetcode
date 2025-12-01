@@ -18,3 +18,30 @@
 
 # The number of nodes in the list is in the range [0, 300].
 # -100 <= Node.val <= 100
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def deleteDuplicates(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        if head == None:
+            return head
+        
+        temp = head
+
+        while temp.next != None:
+            if temp.val == temp.next.val:
+                curr = temp.next
+                temp.next = temp.next.next
+                del curr
+            else:
+                temp = temp.next
+        return head
+
+# Time Complexity: O(n)
