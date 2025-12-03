@@ -55,3 +55,4 @@ class Solution(object):
         
         current.next = list1 or list2
         return head.next
+        
