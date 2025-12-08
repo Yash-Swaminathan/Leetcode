@@ -29,19 +29,30 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution(object):
     def isBalanced(self, root):
         """
         :type root: Optional[TreeNode]
         :rtype: bool
         """
+        # Return True if Height returns non-negative (balanced), False if -1 (imbalanced)
         return (self.Height(root) >= 0)
+    
     def Height(self, root):
+        # Base case: empty tree has height 0
         if root is None:
             return 0
-        left, right = self.Height(root.left), self.Height(root.right)
-        if left < 0 or right < 0 or abs(left - right) > 1:  
-            return -1
-        return max(left, right) + 1
-            
         
+        # Recursively get heights of left and right subtrees
+        left, right = self.Height(root.left), self.Height(root.right)
+        
+        # Check if tree is imbalanced:
+        # - left < 0: left subtree is imbalanced
+        # - right < 0: right subtree is imbalanced
+        # - abs(left - right) > 1: current node has height difference > 1
+        if left < 0 or right < 0 or abs(left - right) > 1:  
+            return -1  # Return -1 to signal imbalance
+        
+        # Tree is balanced, return actual height (max of subtrees + 1)
+        return max(left, right) + 1
